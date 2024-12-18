@@ -1,6 +1,5 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import type { Metadata } from "next";
-import localFont from "next/font/local";
+import type { Metadata } from "next"; 
 import "./globals.css";
 import Header from "@/components/UI/Header";
 import Footer from "@/components/UI/Footer";
@@ -9,6 +8,7 @@ import { Open_Sans } from 'next/font/google'
 const openSans = Open_Sans({
   weight: ["300", "400", "700"],
   subsets: ['latin'],
+  preload: false,
 })
 
 export const metadata: Metadata = {

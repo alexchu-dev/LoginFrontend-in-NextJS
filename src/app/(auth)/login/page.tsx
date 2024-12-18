@@ -1,5 +1,6 @@
 import LoginForm from "@/components/LoginForm";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function LoginPage() {
   return (
@@ -10,6 +11,7 @@ export default function LoginPage() {
           alt="Welcome"
           width={0}
           height={0}
+          priority={true}
           sizes="100vw"
           style={{ width: "100%", height: "auto" }}
           className="md:max-h-full max-h-60 pb-4"
@@ -22,7 +24,9 @@ export default function LoginPage() {
       </div>
       <div className="text-lg text-center place-items-center md:pt-12 pt-4 min-h-screen">
         <Image src="/logo.svg" alt="Modern Connect" width={195} height={70} className="md:w-[195px] w-[140px] m-4" />
-        <LoginForm />
+        <Suspense>
+          <LoginForm />
+        </Suspense>
       </div>
     </div>
   );

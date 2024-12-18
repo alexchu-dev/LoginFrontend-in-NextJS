@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { LoginPayload, LoginResponse } from "@/types/auth";
 import Link from "next/link";
-import { MD5 } from "crypto-js";
-import { Visibility, VisibilityOff, Email, CheckCircle, CircleOutlined } from "@mui/icons-material";
+import { md5 } from "js-md5";
+import { Visibility, VisibilityOff, Email } from "@mui/icons-material";
+// import { CheckCircle, CircleOutlined} from "@mui/icons-material";
 import {
   Box,
   Button,
-  Checkbox,
   FormControl,
-  FormControlLabel,
+  // Checkbox,
+  // FormControlLabel,
   IconButton,
   InputAdornment,
-  InputLabel,
   TextField,
   Typography,
 } from "@mui/material";
@@ -41,7 +41,7 @@ export default function LoginForm() {
         const parsedUrl = new URL(url);
         setRedirectUrl(parsedUrl.toString());
       } catch (e) {
-        console.error("Invalid redirect URL provided:", url);
+        console.error("Invalid redirect URL provided:", url, e);
       }
     }
   }, [searchParams]);
@@ -60,7 +60,8 @@ export default function LoginForm() {
     setError(null);
 
     try {
-      const hashedPassword = MD5(formData.password).toString();
+      const hashedPassword = md5(formData.password)
+      console.log(hashedPassword)
       const payload = {...formData, password: hashedPassword};
       const response = await fetch(`${mc2ApiUrl}/firebase-authen`, {
         method: "POST",

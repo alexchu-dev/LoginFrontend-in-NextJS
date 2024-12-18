@@ -1,0 +1,8 @@
+services:
+  modern_external_web:
+    container_name: modern_external_web
+    image: modern_external_web
+    build: .
+    ports:
+      - "3001:3030"
+
