@@ -12,6 +12,14 @@ Run the development server by:
 npm run dev
 ```
 
+You can also use docker:
+
+```
+docker compose build
+docker compose up
+```
+
+
 Open [http://localhost:3030](http://localhost:3030) with your browser to see the result.
 
 The landing page is redirected to the Login page.

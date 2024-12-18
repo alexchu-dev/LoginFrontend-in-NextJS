@@ -4,5 +4,5 @@ services:
     image: modern_external_web
     build: .
     ports:
-      - "3001:3030"
+      - "3030:3030"
 
